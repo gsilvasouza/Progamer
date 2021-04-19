@@ -1,5 +1,7 @@
 package br.com.fiap.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import br.com.fiap.model.Setup;
@@ -13,5 +15,11 @@ public class SetupDAO {
 		manager.persist(setup);
 		manager.getTransaction().commit();
 		manager.close();
+	}
+	
+	public List<Setup> getAll(){
+		String jpql = "SELECT s FROM Setup s";
+		List<Setup> resultList = manager.createQuery(jpql, Setup.class).getResultList();
+		return resultList;
 	}
 }

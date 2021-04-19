@@ -18,16 +18,21 @@
 							<p:inputText id="name" 
 								value="#{userBean.user.nome}"
 								required="true" 
-								requiredMessage="Name is required"/>
+								requiredMessage="Name is required"> 
+								<f:ajax event="blur" render="messages"/>	
+							</p:inputText>
 						</div>
 					</div>
 					<div class="p-field p-grid">
 						<label for="dataNasc" class="p-col-fixed" style="width: 100px">Born Date</label>
 						<div class="p-col">
-							<p:inputText id="dataNasc" 
+							<p:inputText 
+								id="dataNasc" 
 								value="#{userBean.user.dateNasc}"
 								required="true"
-								requiredMessage="Born Date is required"/>
+								requiredMessage="Born Date is required"> 
+								<f:ajax event="blur" render="messages"/>	
+							</p:inputText>
 						</div>
 					</div>
 					<div class="p-field p-grid">
@@ -36,7 +41,9 @@
 							<p:inputText id="price" 
 								value="#{userBean.user.email}"
 								required="true"
-								requiredMessage="Email is required"/>
+								requiredMessage="Email is required"> 
+									<f:ajax event="blur" render="messages"/>
+							</p:inputText>
 						</div>
 					</div>
 					<div class="p-field p-grid">
@@ -47,7 +54,9 @@
 							toggleMask="true" 
 							redisplay="true"
 							required="true"
-							requiredMessage="Password is required"/>
+							requiredMessage="Password is required"> 
+								<f:ajax event="blur" render="messages"/>
+							</p:password>
 						</div>
 					</div>
 					<f:facet name="footer">
@@ -56,6 +65,21 @@
 				    </f:facet>
 				</p:card>
 			</h:form>
+			
+			<div class="card"> 
+				<h:form id="form"> 
+					<p:dataTable id="users" var="user" 
+						value="#{userBean.users}" 
+						rowKey="#{user.id}"
+						selectionMode="single"> 
+							<p:column headerText="Name"> <h:outputText value="#{user.nome}" /> </p:column> 
+							<p:column headerText="Data Nasc."> <h:outputText value="#{user.dateNasc}" /> </p:column>					
+							<p:column headerText="E-mail"> <h:outputText value="#{user.email}" /> </p:column> 
+							<p:column headerText="Password"> <h:outputText value="#{user.password}" /> </p:column>					
+					</p:dataTable>
+				</h:form>
+			</div>
+			
 		</ui:define>
 	</ui:composition>
 </html>

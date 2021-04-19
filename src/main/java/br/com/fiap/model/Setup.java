@@ -17,6 +17,10 @@ public class Setup {
 	private BigDecimal price;
 
 	public Setup() {
+	}	
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {
